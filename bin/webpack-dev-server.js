@@ -144,3 +144,10 @@ new Server(webpack(wpOpt), options).listen(options.port, options.host, function(
 	if(options.historyApiFallback)
 		console.log("404s will fallback to /index.html");
 });
+
+if(argv["watch-stdin"]) {
+	process.stdin.on("end", function() {
+		process.exit(0)
+	});
+	process.stdin.resume();
+}
